@@ -17,8 +17,11 @@ def add_files_to_git():
 
 def commit_changes(commit_message):
     # Commit changes with a provided commit message
-    subprocess.run(['git', 'commit', '-m', commit_message], check=True)
-    print(f"Committed changes with message: '{commit_message}'")
+    try:
+        subprocess.run(['git', 'commit', '-m', commit_message], check=True)
+        print(f"Committed changes with message: '{commit_message}'")
+    except subprocess.CalledProcessError as e:
+        print(f"Failed to commit changes: {e}")
 
 def set_remote(remote_url, remote_name='origin'):
     # Set the remote repository URL
