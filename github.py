@@ -26,6 +26,7 @@ def commit_changes(commit_message):
 def set_remote(remote_url, remote_name='origin'):
     # Set the remote repository URL
     try:
+        subprocess.run(['git', 'branch', '-M', "main"], check=True)
         subprocess.run(['git', 'remote', 'add', remote_name, remote_url], check=True)
         print(f"Set remote '{remote_name}' to {remote_url}.")
     except subprocess.CalledProcessError:
@@ -36,7 +37,7 @@ def set_remote(remote_url, remote_name='origin'):
 def push_to_remote(remote_name='origin', branch_name='main'):
     # Push changes to the remote repository
     try:
-        subprocess.run(['git', 'push', remote_name, branch_name], check=True)
+        subprocess.run(['git', 'push', '-u', remote_name, branch_name], check=True)
         print(f"Pushed changes to {remote_name}/{branch_name}.")
     except subprocess.CalledProcessError as e:
         print(f"Failed to push changes: {e}")
