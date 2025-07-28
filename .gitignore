@@ -4,3 +4,9 @@ file_gestion.py
 main.py
 codewars.py
 github.py
+UTILS.py
+.gitignore
+.env
+__pycache__/
+.pytest_cache/
+*.pyc
